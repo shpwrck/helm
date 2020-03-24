@@ -8,6 +8,11 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
 
+imageCredentials:
+  registry: quay.io
+  username: someone
+  password: sillyness
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
