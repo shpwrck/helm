@@ -12,4 +12,4 @@
   -  Conditionals
   -  Rancher Supported Versions
 
-## Chart/Catlog RBAC
+## Chart/Catalog RBAC

@@ -73,6 +73,33 @@
 - `{{ $.xxx }}` represents the root scope. (Useful within `range`/`with`)
 
 ## Special Considerations
-- Configuring a private registry
-- Secrets
+
+### Configuring a private registry
+
+```
+imageCredentials:
+  registry: quay.io
+  username: someone
+  password: sillyness
+```
+
+```
+{{- define "imagePullSecret" }}
+{{- printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .Values.imageCredentials.registry (printf "%s:%s" .Values.imageCredentials.username .Values.imageCredentials.password | b64enc) | b64enc }}
+{{- end }}
+```
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: myregistrykey
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: {{ template "imagePullSecret" . }}
+```
+
+### Secrets
+
+
 
