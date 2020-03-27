@@ -101,5 +101,9 @@ data:
 
 ### Secrets
 
+Notes on how secrets are exposed to be documented...
 
+# TODO 
 
+- [ ] Dependency
+- [ ] Removing Variables Effectively
