@@ -48,5 +48,3 @@ rules:
   - update
   - watch
 ```
-
-## TODO
