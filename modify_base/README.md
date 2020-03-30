@@ -74,6 +74,31 @@
 
 ## Special Considerations
 
+### Nesting Charts
+
+You can add a `requirements.yaml` to a given chart to establish chart dependency.
+The example below comes from [here](https://github.com/helm/charts/tree/master/stable/prometheus-operator)
+```
+dependencies:
+
+  - name: kube-state-metrics
+    version: "2.6.*"
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: kubeStateMetrics.enabled
+
+  - name: prometheus-node-exporter
+    version: "1.9.*"
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: nodeExporter.enabled
+
+  - name: grafana
+    version: "5.0.*"
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: grafana.enabled
+```
+
+The components from `kube-state-metrics`, `prometheus-node-exporter`, and `grafana` are required in order for the `prometheus-operator` chart to install.
+
 ### Server side validation
 
 In Helm 3, json schema was introduced. [link](https://github.com/helm/community/blob/master/helm-v3/001-charts.md#schematized-values-files)
