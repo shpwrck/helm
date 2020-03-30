@@ -8,9 +8,11 @@
 
 - `app-readme.md` Adds descriptive text to the UI
 - `questions.yaml` Adds self-guided support in the UI
-  -  Validation
+  -  Validation (client-side)
   -  Conditionals
   -  Rancher Supported Versions
+  
+> For more information click [here](https://rancher.com/docs/rancher/v2.x/en/catalog/custom/creating/#question-variable-reference)
 
 ## Chart/Catalog RBAC
 
@@ -48,6 +50,3 @@ rules:
 ```
 
 ## TODO
-
-- [ ] RBAC App Only User
-- [ ] Questions Example
