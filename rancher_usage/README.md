@@ -22,6 +22,31 @@ Catalogs can be scoped to all three levels [`global`,`cluster`, `project`] which
 - To allow interacting with cluster scoped catalogs use `Manage Cluster Catalogs` or `View Cluster Catalogs`
 - To allow interacting with project scoped catalogs use `Manage Project Catalogs` or `View Project Catalogs`
 
+Adding the following role to a read-only user will allow them to interface with applications, but not the underlying kubernetes components.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    cattle.io/creator: norman
+  name: rt-6p65k
+  namespace: p-d4b55
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - apps
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+```
+
 ## TODO
 
 - [ ] RBAC App Only User
