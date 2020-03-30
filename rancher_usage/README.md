@@ -14,7 +14,13 @@
 
 ## Chart/Catalog RBAC
 
-https://rancher.com/docs/rancher/v2.x/en/catalog/custom/creating/
+### Chart/Catalog based roles
+
+Catalogs can be scoped to all three levels [`global`,`cluster`, `project`] which can make rbac permutations a bit complex.
+
+- To allow interacting with globally scoped catalogs use `Manage Catalogs` or `Use Catalog Templates`
+- To allow interacting with cluster scoped catalogs use `Manage Cluster Catalogs` or `View Cluster Catalogs`
+- To allow interacting with project scoped catalogs use `Manage Project Catalogs` or `View Project Catalogs`
 
 ## TODO
 
