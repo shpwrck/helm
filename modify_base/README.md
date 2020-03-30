@@ -74,6 +74,28 @@
 
 ## Special Considerations
 
+### Server side validation
+
+In Helm 3, json schema was introduced. [link](https://github.com/helm/community/blob/master/helm-v3/001-charts.md#schematized-values-files)
+
+Prior to Helm 3, the solution would look something like this:
+
+```
+# something.tpl
+{{- define "actionValidate" -}}
+  {{ $action := .Values.actions }}
+  {{- if or (eq $action "true") (eq $action "alsotrue") -}}
+    true
+  {{- end -}}
+{{- end -}}
+
+```
+```
+# manifest.yaml
+{{ include "actionValidate" .  | required "Action value is incorrect. The valid values are 'true' and 'alsotrue'." }}
+```
+
+
 ### Configuring a private registry
 
 ```
@@ -98,12 +120,3 @@ type: kubernetes.io/dockerconfigjson
 data:
   .dockerconfigjson: {{ template "imagePullSecret" . }}
 ```
-
-### Secrets
-
-Notes on how secrets are exposed to be documented...
-
-# TODO 
-
-- [ ] Dependency
-- [ ] Removing Variables Effectively
